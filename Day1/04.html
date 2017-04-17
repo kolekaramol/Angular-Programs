@@ -1,0 +1,30 @@
+<html>
+ <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+   <script>
+      angular.module("myDemo",[]);
+     </script>
+  </head>
+   
+    <body ng-app="myDemo" ng-init="price=1250; discount=10">
+       
+        
+        <p>Enter Quantity:<input type="number" ng-model="qty"></p>
+      
+        <p>Price of Product:<span ng-bind="price"></span></p>
+        
+         <p>Discount:{{discount}}%</p>
+        
+        <p>Total Price:<mark>{{qty*price}}</mark></p>
+        
+        <p>Total Discount: {{(qty*price)*10/100}}</p>
+        
+        <p>Pay Amount:{{qty*price-(qty*price)*discount/100}}</p>
+        
+        
+     
+                
+        
+        
+    </body>
+</html>                         

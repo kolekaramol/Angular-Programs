@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Calculator Program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script>
+        angular.module("myApp", []).
+        controller("myCotnroller", function ($scope) {
+            $scope.students = [
+
+                {
+                    "firstName": "Harsh",
+                     "lastName": "Ahire",
+                     "image":"image/image1.jpg",
+                     "location": "Pune"
+                },
+                 {
+                    "firstName": "Raj",
+                     "lastName": "Gujarathi",
+                     "image":"image/image2.jpg",
+                     "location": "Pune"
+                },
+                 {
+                    "firstName": "Vikram",
+                     "lastName": "Pataskar",
+                     "image":"image/image3.jpg",
+                     "location": "Pune"
+                },
+                 {
+                    "firstName": "Vidya",
+                     "lastName": "Dhanavade",
+                     "image":"image/image4.jpg",
+                     "location": "Pune"
+                }
+            ];
+        });
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myCotnroller">
+       
+        <table border="1px">
+            <tr>
+                <th>First name</th>
+                <th>last name</th>
+                <th>Location</th>
+                <th>Image</th>
+            </tr>
+            <tr ng-repeat="s in students">
+                <td>{{s.firstName}}</td>
+                <td>{{s.lastName}}</td>
+                <td>{{s.location}}</td>
+                <td><img ng-src={{s.image}} height="100px" width="200px" /></td>
+            </tr>
+        </table>
+        
+    </div>
+</body>
+
+</html>

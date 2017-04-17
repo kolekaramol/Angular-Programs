@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Calculator Program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+   <script src="calculation.js"></script>
+ </head>
+  <body ng-app = "myApp">
+      <div ng-controller="myController">
+          
+           <p>First Number: <input type = "text" ng-model="fn"/></p>
+           <p>Second Number: <input type = "text" ng-model="sn"/></p>
+          
+           <p>Result: <span ng-bind="result"></span></p>
+          
+            <p><input type = "button" value = "Add" ng-click="add()"/></p>
+            <p><input type = "button" value = "Sub" ng-click="sub()"/></p>
+            <p><input type = "button" value = "Multiplication" ng-click="mul()"/></p>
+            <p><input type = "button" value = "Division" ng-click="div()"/></p>
+          
+          
+      </div>
+  </body>    
+
+</html>

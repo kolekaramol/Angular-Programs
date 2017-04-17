@@ -1,0 +1,40 @@
+<html>
+  <head>
+     <title>Program Of ng-repeat Example</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+          var app = angular.module("myApp", [ ]);
+            app.controller("myController", function($scope){
+            
+                $scope.id = 100;
+                $scope.name ="angular";
+                $scope.job= "manager";
+                                  
+              });
+     </script>
+ </head>
+  <body ng-app = "myApp">
+      <h3>{{"Example of Employee Details"}}</h3>
+      
+      <div ng-controller="myController">
+          <table border = "1px">
+              <tr>
+                  <th>EmpID</th>
+                  <th>EmpName</th>
+                  <th>Emp Salary</th>
+                  
+                 
+              </tr>
+              <tr >
+                 <td>{{id}}</td>
+                 <td>{{name}}</td>
+                 <td>{{job}}</td>
+                 
+             </tr>
+          </table>
+            
+          
+      </div>
+  </body>    
+
+</html>

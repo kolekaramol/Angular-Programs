@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Calculator Program</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script>
+    var app =   angular.module("myMarks",[]);
+        app.controller("examMarks", function($scope){
+            
+            $scope.marks=[40,35,90,65,75];
+        });  
+      </script>
+ 
+ </head>
+    <body ng-app="myMarks">
+        <div ng-controller="examMarks">
+          <ol>
+             <li ng-repeat="m in marks">
+                  Subject Marrks:  {{m}}
+              </li>
+          </ol>
+        </div>
+    </body>
+ 
+
+</html>
