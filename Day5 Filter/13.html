@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Program Of Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+            $scope.emps = [
+                {
+                    "id": "100",
+                     "name": "raju",
+                     "salary": "2000",
+                     "address": "PUNE",
+                     "department": "IT"
+                }
+                , {
+                    "id": "101",
+                     "name": "kiren",
+                     "salary": "2000",
+                     "address": "PUNE",
+                     "department": "Networking"
+                }
+                , {
+                    "id": "102",
+                     "name": "Ganesh",
+                     "salary": "2000",
+                     "address": "PUNE",
+                     "department": "Testing"
+                }
+                , {
+                    "id": "103",
+                     "name": "Tigar",
+                     "salary": "3000",
+                     "address": "PUNE",
+                     "department": "Developer"
+                }
+                ];
+        });
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <h3>{{"Example of Employee Details and Filters"}}</h3>
+    <p>Type a letter in the input field:</p>
+    <p>
+        <input type="search" ng-model="searchtext">
+    </p>
+    <div ng-controller="myController">
+        <table border="1px">
+            <tr>
+                <th>EmpID</th>
+                <th>EmpName</th>
+                <th>Emp Salary</th>
+                <th>Emp Addres</th>
+                <th>Emp Department</th>
+            </tr>
+            <tr ng-repeat="emp in emps | filter: searchtext ">
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.address}}</td>
+                <td>{{emp.department}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

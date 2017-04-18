@@ -1,0 +1,43 @@
+
+<!-- Create Web Page to sort the student details  based on the selected columns using order by filter-->
+
+<html>
+  <head>
+     <title>Program Of  Order By  Filter ... Descending Order</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+          var app = angular.module("myApp", [ ]);
+            app.controller("studentController", function($scope){
+             
+                 $scope.students = [
+                     { sid: 101, name : "sagar", course : "Angular js"},
+                     {sid: 102, name : "ganesh" ,course : "HTML"},
+                     {sid: 103, name : "mahesh" ,course : "PHP"},
+                     {sid: 104,name : "sagar" ,course : "JAVA"}
+                 ];
+                  $scope.x =false; 
+                  $scope.y = "sid";            
+              });
+     </script>
+ </head>
+  <body ng-app = "myApp">
+        <div ng-controller="studentController">
+           
+            <table border="2" width= "250px">
+                 <tr>
+                     <th><a href="" ng-click =" x='!x'; y='sid' ">Student Id</a></th>
+                     <th><a href="" ng-click="x='!x'; y='name' ">Student Name</a></th>
+                     <th><a href="" ng-click="x='!x'; y='course' ">Course Name</a></th>
+                     
+                 </tr>
+                <tr ng-repeat = "student in students | orderBy : y:x">
+                   <td>{{student.sid}}</td>    
+
+                   <td>{{student.name }}</td>
+                   <td>{{student.course}}</td>
+                </tr>
+            </table>
+      </div>
+  </body>    
+
+</html>

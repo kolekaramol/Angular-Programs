@@ -1,0 +1,37 @@
+
+<!-- Create Web Page to sort the student details using order by filter-->
+
+<html>
+  <head>
+     <title>Program Of  Order By  Filter ... Descending Order</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+           angular.module("myApp", [ ]).controller("studentController", function($scope){
+             
+                 $scope.students = [
+                     {"name" : "sagar", "course" : "Angular js"},
+                     {"name" : "ganesh" , "course" : "HTML"},
+                     {"name" : "mahesh" , "course" : "PHP"},
+                     {"name" : "Asha" ,course : "JAVA"}
+                 ];
+                    $scope.x =false;                             
+              });
+     </script>
+ </head>
+  <body ng-app = "myApp">
+        <div ng-controller="studentController">
+            Descending Order : <input type="checkbox" ng-model = "x"/> <br/>
+            <table border="2" width= "250px">
+                 <tr>
+                     <th>Student Name</th>
+                     <th>Course Name</th>
+                 </tr>
+                <tr ng-repeat = "student in students | orderBy : 'course    ':x ">
+                   <td>{{student.name }}</td>
+                   <td>{{student.course}}</td>
+                </tr>
+            </table>
+      </div>
+  </body>    
+
+</html>
