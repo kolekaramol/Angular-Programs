@@ -1,0 +1,56 @@
+
+<!-- Create Web Page to organize the product data so that it will allows the user to search & sorting based on given scenario..-->
+
+<html>
+  <head>
+     <title>Program Of  Order By  Filter ... Descending Order</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+          var app = angular.module("myApp", [ ]);
+            app.controller("productController", function($scope){
+             
+                 $scope.products = [
+                     {ProductName: "Dell Laptop", Brand:"Dell", UnitPrice:"24000" },
+                     {ProductName: "HP Laptop", Brand:"HP", UnitPrice:"42000" },
+                     {ProductName: "Sony Laptop", Brand:"SONY", UnitPrice:"24000" },
+                     {ProductName: "Lenovo Laptop", Brand:"Lenovo", UnitPrice:"15000" },
+                 ];
+                 
+                  $scope.s1 ;
+                  $scope.s2;
+                  $scope.s3;
+                 
+              });
+     </script>
+ </head>
+  <body ng-app = "myApp">
+        <div ng-controller="productController">
+            <table border="2" width= "250px">
+                 <tr>
+                     <th><a href="" >Product Name</a></th>
+                     <th><a href="" >Brand</a></th>
+                     <th><a href="">Unit Price</a></th>
+                     
+                 </tr>
+                <tr>
+                    <td><input type="text" placeholder="Product name" ng-model="s1"></td>  
+                    <td>
+                     <select ng-model = "s2">
+                            <option>Dell</option>
+                            <option>Sony</option>
+                            <option>Lenove</option>
+                      </select>
+                    </td>    
+                     <td><input type="text" placeholder=" Unit Price"ng-model="s3"></td>  
+                </tr>
+                <tr ng-repeat = "item in products |  filter:              {'ProductName':s1,'Brand':s2,'UnitPrice':s3}">
+                
+                  <td>{{item.ProductName}}</td>
+                  <td>{{item.Brand}}</td>    
+                  <td>{{item.UnitPrice| currency:"INR"}}</td>    
+                </tr>
+            </table>
+      </div>
+  </body>    
+
+</html>
