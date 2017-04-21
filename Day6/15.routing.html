@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Angular Js Routing </title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <script>
+         var mainApp = angular.module("mainApp", ['ngRoute']);
+         mainApp.config(['$routeProvider', function($routeProvider) {
+            $routeProvider.
+            
+            when('/home', {
+               templateUrl: 'home.html',
+               controller: 'homeController'
+            }).
+            
+            when('/about', {
+               templateUrl: 'about.html',
+               controller: 'aboutController'
+            }).
+            
+            when('/services', {
+               templateUrl: 'services.html',
+               controller: 'servicesController'
+            }).
+            
+            otherwise({
+               redirectTo: '/services'
+            });
+         }]);
+         
+         mainApp.controller('homeController', function($scope) {
+            $scope.message = "Welcome to home page";
+         });
+         
+         mainApp.controller('aboutController', function($scope) {
+            $scope.message = "This is About Page";
+         });
+            
+         mainApp.controller('servicesController', function($scope) {
+            $scope.message = "This is services page";
+         });        
+			
+      </script>   
+    
+  </head>    
+<body>
+    <h2>AngularJS Routing Example</h2>
+      <div ng-app = "mainApp">
+         <ul>
+            <a href = "#home">Home</a>
+            <a href = "#about">About Us</a>
+            <a href = "#services">Services</a>
+         </ul>      
+         <div ng-view></div>
+         
+         <script type = "text/ng-template" id = "home.html">
+            <h2> Home Page </h2>
+            {{message}}
+         </script>
+         
+         <script type = "text/ng-template" id = "about.html">
+            <h2> About page </h2>
+            {{message}}
+         </script>
+          <script type = "text/ng-template" id = "services.html">
+            <h2> Services </h2>
+            {{message}}
+         </script>
+      </div>
+      
+      
+     
+</body>    
+
+
+</html>

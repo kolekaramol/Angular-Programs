@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hide And Show  Example </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <h2>Hide And Show  Example </h2>
+     <div>
+         <p>Enter Name: <input ng-model = "name" /></p>
+       
+         <p>Both Are Same : <input type = "checkbox" ng-model="checkflag" name="checkflag"/></p>
+      
+         <p>Home Telephone Number:<input ng-model = "homeno"></p>
+        
+         <p  ng-hide= "checkflag">Contact number:<input ng-model = "contactno"/></p>
+         <p ng-hide= "checkflag">Email ID: <input ng-model = "email"/></p>
+         
+        
+    
+     </div>
+    </body>
+
+</html>
