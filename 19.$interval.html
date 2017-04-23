@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Interval</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller("myController", function($scope,$timeout,$interval){
+            var i = 10;
+            $scope.callAtInterval = function(){
+                $scope.intervalmessage = "interval happened" + i++;
+            }
+            $interval(function(){
+                $scope.callAtInterval();
+            },1000);
+        });
+       
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller ="myController">
+    <h1>{{message}}</h1>
+    <h1>{{intervalmessage}}</h1>
+    
+</body>
+
+</html>

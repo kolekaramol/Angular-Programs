@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Interval</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+        
+        app.controller("myController", function($scope, $interval,$http){
+            var i = 1;
+            $scope.users=[];
+            $scope.callAtInterval = function(){
+                var url ="https://reqres.in/api/users?page="+i;
+                $http.get(url).then(function(respose){
+                    $scope.users = respose.data.data;
+                    })
+                   $scope.interval = i++;
+                }
+             $interval(function(){
+                $scope.callAtInterval();
+            },2000);
+        });
+       
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller ="myController">
+    {{"The interval and Time Out"}}
+   <table border="1px">
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Image</th>
+    </tr>
+    <tr ng-repeat = "user in users" >
+        <td>{{user.id}}</td>   
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td><img height ="100px" width="200px" ng-src ="{{user.avatar}}" /></td>
+        
+    </tr>
+    </table>
+</body>
+
+</html>

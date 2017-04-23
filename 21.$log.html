@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular Js Routing </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script>
+        var app = angular.module("ajaxApp", []);
+        app.controller("ajaxController", function ($scope, $http,$log) {
+            $scope.users = [];
+            $scope.pageid = 1;
+         
+            $scope.getAjaxdata = function () {
+                var url = "https://reqres.in/api/users?page=" +$scope.pageid;
+                $http.get(url).then(function (response) {
+                    $scope.users = response.data.data;
+                    // To print the data on console we $log service
+                    $log.log($scope.users);
+                });
+            }
+            $scope.getAjaxdata();
+        });
+    </script>
+</head>
+
+<body ng-app="ajaxApp">
+    <h2>Ajax Example </h2>
+    <div ng-controller="ajaxController"> .
+        <p>Enter The Page ID:
+            <input ng-model="pageid" ng-change="getAjaxdata()" /> </p>
+        <table border="1px">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Image</th>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td><img ng-src="{{user.avatar}}" height="100px" width="200px" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
