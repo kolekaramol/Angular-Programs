@@ -1,0 +1,32 @@
+<html>
+  <head>
+     <title>dollar Convertor</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+          var app = angular.module("myApp", [ ]);
+          
+         app.controller("myController", function($scope, convertService){
+                $scope.convert = function(){
+                    $scope.inrAmmount = convertService.convert($scope.dollar);
+                }               
+              });
+            app.service("convertService", function(){
+                 var dollarvalue = 66.89;
+               
+                this.convert = function (dollar){
+                  return dollar * dollarvalue;
+              }
+            });
+     </script>
+      
+ </head>
+  <body ng-app = "myApp">
+      <div ng-controller="myController">
+          
+        <p> Enter Dollar Ammount : <input type = "number" ng-model = "dollar" ng-change ="convert()"/></p>
+        <p> You INR Ammount is: <span ng-bind ="inrAmmount"></span></p>  
+          
+      </div>
+  </body>    
+
+</html>
