@@ -1,0 +1,49 @@
+<html>
+  <head>
+     <title>Factory Service Example</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+     <script>
+          var app = angular.module("myApp", [ ]);
+              app.controller("myController",['$log','$scope', 'calFactory',function($log,$scope, calFactory){
+                  $scope.firstNumber=10;
+                  $scope.secondNumber=20;
+                  $log.log("Controller id running mode...");
+                  
+              $scope.doSum = function(){
+                  
+                  calFactory.getSum($scope.firstNumber , $scope.secondNumber, function(response){
+                      $scope.sum = response;
+                  });
+              
+              };
+              }]);
+         
+             app.factory('calFactory',['$log', function( $log){
+                 $log.log("Instantiated calFactory..");
+                 
+                 var obj = {};
+           
+                 obj.getSum = function(firstNumber, secondNumber, callback){
+                     var add =  parseInt(firstNumber) + parseInt(secondNumber);
+                     callback(add);
+                 };
+                 
+                 return obj;
+             }]);
+             
+     </script>
+ </head>
+  <body ng-app = "myApp">
+      <div ng-controller="myController">
+        <div>
+           <p>Enter First number:<input type="text" ng-model="firstNumber"></p>   <br/>
+           <p>Enter Second number:<input type="text" ng-model="secondNumber"></p> <br/>
+                    
+        </div>  
+        <p>Result:{{sum}}</p>
+          <input type="button" ng-click="doSum()" value="Addition ">
+        
+      </div>
+  </body>    
+
+</html>
