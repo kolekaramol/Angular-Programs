@@ -1,0 +1,30 @@
+<html>
+   <head>
+      <title>Custom Directive Example</title>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+       <script>
+       
+           var app = angular.module("myApp", []);
+           
+           app.controller("myController", ['$scope', function($scope){
+                 $scope.msg="This is program of custom directive accsessing html file from outside";  
+               $scope.msg2="Hi Vikram";
+              }]);
+            
+           app.directive("myInfoMsg", function(){
+                 return {
+                     templateUrl: "index.html"
+                 }; 
+              });
+       </script>
+   </head>
+    <body ng-app="myApp">
+         
+        <div ng-controller ="myController">
+            <my-info-msg>
+        
+            </my-info-msg>
+        </div>
+    
+    </body>
+</html>
