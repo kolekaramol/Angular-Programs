@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="customersCtrl">
+
+        <table border="1">
+            <tr ng-repeat="x in data">
+                <td>{{ x.employeeId }}
+
+
+                </td>
+                <td>{{ x.segmentId }}</td>
+                <td>{{ x.marketId }}</td>
+                <td>{{ x.employeeName }}</td>
+                <td><input id=employe-{{x.employeeId}}-{{x.segmentId}}-{{x.marketId}} name=employe-{{x.employeeId}}-{{x.segmentId}}-{{x.marketId}} ng-model="emoloyee['employeeId'+x.employeeId]['segmentId'+x.segmentId]['marketId'+x.marketId]" ng-value="x.employeeName" ng-change="pushemployeeName(x)" />
+                </td>
+
+                <td><input id=empemployeeDesignation-{{x.employeeId}}-{{x.segmentId}}-{{x.marketId}} ng-model="empemployeeDesignation[x.employeeId][x.segmentId][x.marketId]" ng-value="x.employeeDesignation" />
+                </td>
+
+
+
+            </tr>
+            <tr colspan="4">
+                <td><input type="button" ng-click="updateData()" value="update data" />
+                </td>
+            </tr>
+        </table>
+       
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+            $scope.emoloyee = {};
+            $scope.empemployeeDesignation = {};
+            $scope.employeeInfo;
+            $scope.data = [{
+                    "employeeId": 1,
+                    "segmentId": 1,
+                    "marketId": 1,
+                    "employeeName": "amol",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 1,
+                    "marketId": 2,
+                    "employeeName": "ad",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 1,
+                    "marketId": 3,
+                    "employeeName": "amoadsl",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 1,
+                    "marketId": 4,
+                    "employeeName": "amoasdl",
+                    "employeeDesignation": "Jvaa"
+
+                },
+                {
+                    "employeeId": 1,
+                    "segmentId": 2,
+                    "marketId": 1,
+                    "employeeName": "asd",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 3,
+                    "marketId": 2,
+                    "employeeName": "asd",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 3,
+                    "marketId": 3,
+                    "employeeName": "asd",
+                    "employeeDesignation": "Jvaa"
+
+                }, {
+                    "employeeId": 1,
+                    "segmentId": 4,
+                    "marketId": 4,
+                    "employeeName": "asd",
+                    "employeeDesignation": "Jvaa"
+
+                }
+
+            ]
+            $scope.updatedData = [];  //send this data
+          
+            $scope.myArray = [];
+            $scope.updateData = function() {
+
+               $scope.updatedData.length = 0;
+                angular.forEach($scope.data, function(value) {
+                    $scope.newEmployeeId = value.employeeId;
+                    $scope.newSegmentId = value.segmentId;
+                    $scope.newMarketId = value.marketId;
+                    $scope.emplid = 'employe' + '-' + $scope.newEmployeeId + '-' + $scope.newSegmentId + '-' + $scope.newMarketId;
+                    $scope.empldesignationid = 'empemployeeDesignation' + '-' + $scope.newEmployeeId + '-' + $scope.newSegmentId + '-' + $scope.newMarketId;
+                    $scope.newEmployeeName = document.getElementById($scope.emplid).value;
+                    $scope.newEmployeeDesignation = document.getElementById($scope.empldesignationid).value;
+                   // console.log($scope.newEmployeeName + "  " + $scope.newEmployeeDesignation);
+                    $scope.updatedData.push({
+                        "employeeId": $scope.newEmployeeId,
+                        "segmentId": $scope.newSegmentId,
+                        "marketId": $scope.newMarketId,
+                        "employeeName": $scope.newEmployeeName,
+                        "employeeDesignation": $scope.newEmployeeDesignation
+                    });
+                });
+                console.log($scope.updatedData);// need to send this data
+            }
+
+        });
+    </script>
+
+</body>
+</html>
